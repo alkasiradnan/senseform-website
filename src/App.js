@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import  Index  from "./pages/Index";
+import Contact from "./pages/Contact";
+import  Company from "./pages/Company";
+import { NavigationBar } from "./components/NavigationBar";
+import { Jumbotron } from "./components/Jumbotron";
+import Layout  from "./components/Layout";
+// import {Index} from './pages/Index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Router>
+          <NavigationBar />
+          <Jumbotron />
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={Index} />
+              <Route exact path="/contact-us" component={Contact} />
+              <Route exact path="/company" component={Company} />
+            </Switch>
+          </Layout>
+        </Router>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
